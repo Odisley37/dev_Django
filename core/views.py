@@ -34,6 +34,10 @@ def lista_eventos(request):
     return render(request, 'agenda.html', dados)
 @login_required(login_url='/login/')
 def evento(request):
+    id_evento = request.GET.get('id')
+    dados == {}
+    if id_eventos:
+        dados['evento'] = Evento.objects.get(id=id_evento)
     return render(request, 'evento.html')
 @login_required(login_url='/login/')
 def submit_evento(request):
@@ -47,5 +51,13 @@ def submit_evento(request):
                               descricao=descricao,
                               usuario=usuario)
     return redirect('/')
+@login_required(login_url='/login/')
+def delete_evento(request, id_evento):
+    usuario = request.user
+    evento = Evento.objects.get(id=id_evento)
+    if usuario == evento.usuario:
+        evento.delete()
+    return redirect('/')
+
 
 

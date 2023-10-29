@@ -24,6 +24,7 @@ urlpatterns = [
     path('appDjango1/', views.lista_eventos),
     path('appDjango1/evento/', views.evento),
     path('appDjango1/evento/submit', views.submit_evento),
+    path('appDjango1/evento/delete/<int:id_evento>/', views.delete_evento),
     path('', RedirectView.as_view(url='/appDjango1/')),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
